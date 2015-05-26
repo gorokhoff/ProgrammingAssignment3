@@ -1,12 +1,12 @@
 {
-    "contents" : "best <- function(state, outcome) {\n  outcome <- read.csv(\"data/outcome-of-care-measures.csv\", colClasses = \"character\")\n  statByState<-outcome[outcome$State == state,]\n  l<-dim(statByState)[1]\n  if(l == 0) stop(\"invalid state\")\n  #temp1<-statByState[,varlist(statByState,pattern=\"^Hospital\")]\n  temp1<-statByState[, grepl(\"^Hospital.30.Day.Death..Mortality|Hospital.Name\", names(statByState))]\n  #temp1<-head(statByState[,c(colnames(statByState)[grep(\"Hospital 30-Day Death\",colnames(statByState))])])\n  ptrn<-paste(\"Hospital.Name|\", outcome, sep = \"\")\n  temp2<-temp1[, grepl(ptrn, names(temp1))]\n  temp2\n}\n\n",
+    "contents" : "best <- function(state, outcome) {\n  outcome <- read.csv(\"data/outcome-of-care-measures.csv\", colClasses = \"character\")\n  statByState<-outcome[outcome$State == state,]\n  l<-dim(statByState)[1]\n  if(l == 0) stop(\"invalid state\")\n  #temp1<-statByState[,varlist(statByState,pattern=\"^Hospital\")]\n  temp1<-statByState[, grepl(\"^Hospital.30.Day.Death..Mortality|Hospital.Name\", names(statByState))]\n  #temp1<-head(statByState[,c(colnames(statByState)[grep(\"Hospital 30-Day Death\",colnames(statByState))])])\n  names(temp1)<-c(\"Name\",\"heart attack\",\"heart failure\",\"pneumonia\")\n  temp1[\"pneumonia\"]<-as.numeric(temp1[\"pneumonia\"])\n    temp1<-subset[, min(temp1[\"pneumonia\"])]\n  temp1\n}\n\n",
     "created" : 1432648735644.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3628455650",
+    "hash" : "3973584353",
     "id" : "CF7F50F0",
-    "lastKnownWriteTime" : 1432651726,
+    "lastKnownWriteTime" : 1432652418,
     "path" : "E:/Docs/Personal/Coursera/ProgrammingAssignment3/best.R",
     "project_path" : "best.R",
     "properties" : {

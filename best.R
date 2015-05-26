@@ -6,8 +6,9 @@ best <- function(state, outcome) {
   #temp1<-statByState[,varlist(statByState,pattern="^Hospital")]
   temp1<-statByState[, grepl("^Hospital.30.Day.Death..Mortality|Hospital.Name", names(statByState))]
   #temp1<-head(statByState[,c(colnames(statByState)[grep("Hospital 30-Day Death",colnames(statByState))])])
-  ptrn<-paste("Hospital.Name|", outcome, sep = "")
-  temp2<-temp1[, grepl(ptrn, names(temp1))]
-  temp2
+  names(temp1)<-c("Name","heart attack","heart failure","pneumonia")
+  temp1["pneumonia"]<-as.numeric(temp1["pneumonia"])
+    temp1<-subset[, min(temp1["pneumonia"])]
+  temp1
 }
 
